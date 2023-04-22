@@ -14,13 +14,12 @@ def index():
         response = openai.Completion.create(
             model="text-davinci-003",
             prompt=generate_prompt(animal),
-            temperature=0.6,
+            temperature=0.9,
         )
         return redirect(url_for("index", result=response.choices[0].text))
 
     result = request.args.get("result")
     return render_template("index.html", result=result)
-
 
 def generate_prompt(animal):
     return """Suggest three names for an animal that is a superhero.
